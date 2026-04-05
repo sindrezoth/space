@@ -1,1 +1,3 @@
-## Look around...
+## Вітаю :)
+
+Place where i put random things.

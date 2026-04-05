@@ -17,11 +17,15 @@ export const metadata: Metadata = {
   description: "Own space with own ideas",
 };
 
+type UIAppearance = "cli" | "tui" | "gui" | "gl";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const UI: UIAppearance = "gui";
+
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>{children}</body>

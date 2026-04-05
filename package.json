@@ -1,5 +1,6 @@
 {
   "name": "sindrezoth.space",
+  "description": "Own space with own ideas",
   "version": "0.1.0",
   "private": true,
   "scripts": {
