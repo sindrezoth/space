@@ -17,17 +17,24 @@ export const metadata: Metadata = {
   description: "Own space with own ideas",
 };
 
-type UIAppearance = "cli" | "tui" | "gui" | "gl";
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "ua" }];
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
-  const UI: UIAppearance = "gui";
+  const { locale } = await params;
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
