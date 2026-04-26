@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Sindrezoth's!",
@@ -31,10 +20,33 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html
-      lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function() {
+  try {
+    const stored = localStorage.getItem('theme');
+
+    const getSystemTheme = () =>
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+
+    let theme = stored;
+
+    if (!theme) {
+      theme = getSystemTheme();
+    }
+
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {}
+})();
+    `,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
