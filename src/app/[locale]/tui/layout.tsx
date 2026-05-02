@@ -1,4 +1,4 @@
-import HeaderGUI from "@/components/gui/HeaderGUI";
+import HeaderTUI from "@/components/tui/HeaderTUI";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default async function RootLayout({
 
   return (
     <>
-      <HeaderGUI />
+      <HeaderTUI />
       {children}
     </>
   );

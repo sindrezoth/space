@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/gui/Header";
 
 export const metadata: Metadata = {
   title: "Sindrezoth's!",
@@ -22,32 +23,29 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-(function() {
-  try {
-    const stored = localStorage.getItem('theme');
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function () {
+            try {
+              const stored = localStorage.getItem('theme');
 
-    const getSystemTheme = () =>
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
+              const system = window
+                .matchMedia('(prefers-color-scheme: dark)')
+                .matches
+                  ? 'dark'
+                  : 'light';
 
-    let theme = stored;
+                const mode = stored || 'system';
+                const resolved = mode === 'system' ? system : mode;
 
-    if (!theme) {
-      theme = getSystemTheme();
-    }
-
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch (e) {}
-})();
-    `,
-          }}
-        />
-      </head>
-      <body>{children}</body>
+                document.documentElement.dataset.theme = resolved;
+                document.documentElement.dataset.mode = mode;
+            } catch (e) {}
+          })();
+          ` }} />
+        </head>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }
