@@ -1,4 +1,4 @@
-import ChooseInterface from "@/components/ChooseInterface";
+import ChooseInterface from "@/components/chooseInterface/ChooseInterface";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ua" }];
@@ -10,8 +10,8 @@ export default async function HomePage({ params }: Params) {
   const { locale } = await params;
 
   return (
-    <div>
+    <main>
       <ChooseInterface />
-    </div>
+    </main>
   );
 }

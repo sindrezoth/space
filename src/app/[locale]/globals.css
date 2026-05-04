@@ -109,6 +109,7 @@ body {
   gap: 1rem;
   align-items: center;
 }
+
 .card {
   background: var(--color-card);
   border: 1px solid var(--color-border);
@@ -116,6 +117,7 @@ body {
   box-shadow: var(--shadow);
   padding: 1rem;
 }
+
 .button {
   display: inline-flex;
   align-items: center;
