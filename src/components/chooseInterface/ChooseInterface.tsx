@@ -1,24 +1,47 @@
-import Link from "next/link";
-import { ALLOWED_UI } from "@/lib/constants";
-import HeaderGUI from "../gui/HeaderGUI";
+"use client";
+import { useEffect, useRef, useState } from "react";
 import styles from "./chooseInterface.module.css";
+import HeaderGUI from "../gui/HeaderGUI";
+import InterfaceToChooseCard from "./InterfaceToChooseCard";
+import { AllowedUI } from "@/type";
+import { ALLOWED_UI } from "@/lib/constants";
+
+export type Selected = AllowedUI | null;
 
 export default function ChooseInterface() {
-  const active: typeof ALLOWED_UI | null = null;
+  const [selected, setSelected] = useState<Selected>(null);
+
+  useEffect(() => {
+    function handlePointerDown(e: PointerEvent) {
+      const target = e.target as HTMLElement;
+
+      const selectable = target.closest<HTMLElement>("[data-selectable]");
+
+      if (!selectable) {
+        setSelected(null);
+        return;
+      }
+
+      const id = selectable.dataset.selectable as Selected;
+      setSelected(id);
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, []);
+
   return (
-    <>
-      <HeaderGUI />
-      <h2>Hello!</h2>
-      <ul className={styles.container}>
+    <div className={styles.container}>
+      <ul className={styles.optionsList}>
         {ALLOWED_UI.map((ui) => (
-          <li
-            key={`${ui}-choosing`}
-            className={`${styles.option} ${ui.toLowerCase() === active ? styles.active : ""}`}
-          >
-            <Link href={`/${ui.toLowerCase()}`}>{ui}</Link>
+          <li key={`${ui}-choosing`}>
+            <InterfaceToChooseCard ui={ui} selected={selected} />
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
