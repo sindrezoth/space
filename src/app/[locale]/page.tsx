@@ -1,22 +1,21 @@
 import ChooseInterface from "@/components/chooseInterface/ChooseInterface";
 import styles from "./styles.module.css";
 import HeaderGUI from "@/components/gui/HeaderGUI";
+import UIWrapper from "@/components/gui/UIWrapper";
 
-export function generateStaticParams() {
+export async function generateStaticParams({ params }: Params) {
   return [{ locale: "en" }, { locale: "ua" }];
 }
 
 type Params = { params: Promise<{ locale: string }> };
 
-export default async function HomePage({ params }: Params) {
-  const { locale } = await params;
-
+export default function HomePage() {
   return (
-    <div className={styles["whole-wrapper"]}>
+    <UIWrapper>
       <HeaderGUI />
-      <main className={styles.main}>
+      <main className={"deselect " + `${styles.main}`}>
         <ChooseInterface />
       </main>
-    </div>
+    </UIWrapper>
   );
 }

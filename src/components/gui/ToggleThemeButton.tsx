@@ -5,9 +5,9 @@ import { THEMES_MODES } from "@/lib/constants";
 import { ThemeMode } from "@/type";
 
 export default function ThemeToggle() {
-  const { mode, setMode } = useTheme()
+  const { mode, setMode } = useTheme();
 
-  if(!mode) {
+  if (!mode) {
     return null;
   }
 
@@ -34,9 +34,5 @@ export default function ThemeToggle() {
 }
 
 function icon(type: ThemeMode) {
-  return type === "light"
-    ? "☀️"
-    : type === "dark"
-    ? "🌙"
-    : "🖥️";
+  return type === "light" ? "☀️" : type === "dark" ? "🌙" : "🖥️";
 }

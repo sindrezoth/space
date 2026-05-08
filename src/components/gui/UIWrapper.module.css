@@ -1,0 +1,13 @@
+.whole-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gui-bg-wrapper {
+  background-color: darkolivegreen;
+}
+
+.tui-bg-wrapper {
+  background-color: darkblue;
+}

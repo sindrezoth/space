@@ -1,16 +1,17 @@
 "use client";
 
-import { useUI } from "@/hooks/useUI";
 import { ALLOWED_UI } from "@/lib/constants";
+import { useUI } from "@/lib/store/uiStore";
 import { UI } from "@/type";
 
 export default function UIToggle() {
-  const { ui, setUi } = useUI()
+  const selected = useUI((state) => state.selected);
+  const setSelected = useUI((state) => state.setSelected);
 
-  if(!ui) {
+  if (!selected) {
     return null;
   }
-  console.log(ALLOWED_UI.indexOf(ui));
+  console.log(ALLOWED_UI.indexOf(selected));
 
   return (
     <div className="ui-toggle">
@@ -18,15 +19,15 @@ export default function UIToggle() {
         className="highlight"
         style={{
           width: `calc((100% - 8px) / ${ALLOWED_UI.length})`,
-          transform: `translateX(${ALLOWED_UI.indexOf(ui) * 100}%)`,
+          transform: `translateX(${ALLOWED_UI.indexOf(selected) * 100}%)`,
         }}
       />
 
       {ALLOWED_UI.map((opt) => (
         <button
           key={opt}
-          className={"button option" + (ui === opt ? " active" : "")}
-          onClick={() => setUi(opt)}
+          className={"button option" + (selected === opt ? " active" : "")}
+          onClick={() => setSelected(opt)}
         >
           {icon(opt)}
         </button>
@@ -42,11 +43,11 @@ const Icons = {
   GLUI: "🌐",
 } as const;
 
-function icon(type: UI): typeof Icons[keyof typeof Icons] {
-  switch(type) {
+function icon(type: UI): (typeof Icons)[keyof typeof Icons] {
+  switch (type) {
     case "GUI":
       return Icons[type];
-    case "TUI": 
+    case "TUI":
       return Icons[type];
     case "CLI":
       return Icons[type];
