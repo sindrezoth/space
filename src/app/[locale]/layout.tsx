@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/gui/Header";
+import "@/styles/globals.css";
+import UIWrapper from "@/components/UIWrapper";
 
 export const metadata: Metadata = {
-  title: "Sindrezoth's!",
+  title: "Sindrezoth's! | What you are prefer?",
   description: "Own space with own ideas",
 };
 
@@ -23,7 +23,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           (function () {
             try {
               const stored = localStorage.getItem('theme');
@@ -41,10 +43,12 @@ export default async function RootLayout({
                 document.documentElement.dataset.mode = mode;
             } catch (e) {}
           })();
-          ` }} />
-        </head>
+          `,
+          }}
+        />
+      </head>
       <body>
-        {children}
+        <UIWrapper>{children}</UIWrapper>
       </body>
     </html>
   );

@@ -1,0 +1,53 @@
+.theme-toggle-wrapper {
+  width: fit-content;
+}
+
+.theme-toggle {
+  width: fit-content;
+  position: relative;
+  background: var(--color-bg-secondary);
+  border-radius: 999px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.theme-toggle ul {
+  padding-left: 0;
+  display: inline-flex;
+}
+
+.theme-toggle li {
+  list-style: none;
+}
+
+.theme-toggle .highlight {
+  width: calc((100% - 8px) / 3);
+}
+
+.option {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.option.active {
+  color: var(--color-text);
+}
+
+.highlight {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(100% - 8px);
+  border-radius: 999px;
+  background: var(--grey);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease;
+}

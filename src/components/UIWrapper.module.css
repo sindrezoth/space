@@ -1,3 +1,5 @@
+@import "../styles/globals.css";
+
 .whole-wrapper {
   height: 100%;
   display: flex;
@@ -5,7 +7,7 @@
 }
 
 .gui-bg-wrapper {
-  background-color: darkolivegreen;
+  background-color: var(--color-border);
 }
 
 .tui-bg-wrapper {

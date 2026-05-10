@@ -15,7 +15,17 @@ export default function InterfaceToChooseCard({ ui, selected }: Params) {
       className={`${styles.option} ${ui === selected ? styles.active : ""}`}
     >
       <p>{ui}</p>
-      {ui === selected && <Link href={`/${ui.toLowerCase()}`}>choose</Link>}
+      {ui === selected && (
+        <>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam
+            alias placeat enim modi veritatis. Ipsum consequuntur consectetur
+            fuga minus, soluta similique, molestias totam pariatur cum inventore
+            atque error eos eius?
+          </p>
+          <Link href={`/${ui.toLowerCase()}`}>choose</Link>
+        </>
+      )}
     </div>
   );
 }

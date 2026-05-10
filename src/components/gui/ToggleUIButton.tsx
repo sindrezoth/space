@@ -3,6 +3,7 @@
 import { ALLOWED_UI } from "@/lib/constants";
 import { useUI } from "@/lib/store/uiStore";
 import { UI } from "@/type";
+import styles from "./radio-buttons.module.css";
 
 export default function UIToggle() {
   const selected = useUI((state) => state.selected);
@@ -13,19 +14,18 @@ export default function UIToggle() {
   }
 
   return (
-    <div className="ui-toggle">
+    <div className={styles["ui-toggle"]}>
       <div
-        className="highlight"
+        className={styles.highlight}
         style={{
           width: `calc((100% - 8px) / ${ALLOWED_UI.length})`,
           transform: `translateX(${ALLOWED_UI.indexOf(selected) * 100}%)`,
         }}
       />
-
       {ALLOWED_UI.map((opt) => (
         <button
           key={opt}
-          className={"button option" + (selected === opt ? " active" : "")}
+          className={`${styles.option} + ${selected === opt ? " " + styles.active : ""}`}
           onClick={() => setSelected(opt)}
         >
           {icon(opt)}

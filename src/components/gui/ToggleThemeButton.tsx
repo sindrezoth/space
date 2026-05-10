@@ -23,7 +23,7 @@ export default function ThemeToggle() {
       {THEMES_MODES.map((opt) => (
         <button
           key={opt}
-          className={"button option" + (mode === opt ? " active" : "")}
+          className={"option" + (mode === opt ? " active" : "")}
           onClick={() => setMode(opt)}
         >
           {icon(opt)}

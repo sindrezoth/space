@@ -1,3 +1,5 @@
+@import "../../styles/variables.module.css";
+
 :root {
   --option-color: #333;
   --option-bg: #aaa;
@@ -26,7 +28,7 @@ html[data-theme="light"] {
   --option-border-color: #2a2a2a;
   --option-border-color-hover: #555;
 
-  --option-color-active: #4ade80;
+  --option-color-active: #2a2a2a;
   --option-background: #afaf14;
 }
 
@@ -107,16 +109,3 @@ html[data-theme="dark"] {
 .cli .knob {
   transform: translateX(44px);
 }
-
-/* .cli { */
-/*   background: black; */
-/*   color: #00ff88; */
-/*   font-family: monospace; */
-/*   border: 1px solid #00ff88; */
-/* } */
-/**/
-/* .gui { */
-/*   background: linear-gradient(135deg, #1e1e2e, #3a3a5a); */
-/*   color: white; */
-/*   border-radius: 12px; */
-/* } */
