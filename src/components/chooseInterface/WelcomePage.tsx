@@ -5,11 +5,13 @@ import ThemeRadio from "./ThemeRadio";
 
 export async function WelcomePage() {
   return (
-    <Background>
-      <ThemeRadio />
-      <main className={"deselect " + `${styles.main}`}>
-        <ChooseInterface />
-      </main>
-    </Background>
+    <>
+      <Background>
+        <ThemeRadio />
+        <main className={"deselect " + `${styles.main}`}>
+          <ChooseInterface />
+        </main>
+      </Background>
+    </>
   );
 }

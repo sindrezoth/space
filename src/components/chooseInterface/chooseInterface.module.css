@@ -43,6 +43,7 @@ html[data-theme="dark"] {
 }
 
 .optionsList {
+  z-index: 1;
   display: flex;
   margin-inline: 16px;
   gap: 16px;
@@ -84,6 +85,7 @@ html[data-theme="dark"] {
   border-color: var(--option-color-active);
   background: var(--option-background);
   color: var(--option-color-active);
+  cursor: initial;
 }
 
 .switch {
